@@ -1,3 +1,37 @@
+/*******************
+  Overrides
+*******************/
 .navbar {
   border-radius: 0px;
+}
+
+/*******************
+  Spacers
+*******************/
+.spacer-40 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.spacer-20 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.spacer-10 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/*******************
+  Home
+*******************/
+.bg-gray {
+  background-color: #F1F1F1;
 }
