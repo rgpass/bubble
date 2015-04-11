@@ -25,6 +25,9 @@
   <!-- Bootstrap and Overrides -->
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+  <!-- Mobile first -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
@@ -37,7 +40,18 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" ui-sref="home">Bubble</a>
+        <a class="navbar-brand" ui-sref="home">BUBBLE</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="#">About</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a ui-sref="home">Home</a></li>
+          <li><a ui-sref="presenter">Presenter</a></li>
+          <li><a ui-sref="attendee">Attendee</a></li>
+        </ul>
       </div>
     </div>
   </nav>

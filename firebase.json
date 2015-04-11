@@ -1,0 +1,9 @@
+{
+  "firebase": "getbubble",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
