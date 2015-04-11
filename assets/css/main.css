@@ -35,3 +35,13 @@
 .bg-gray {
   background-color: #F1F1F1;
 }
+
+
+/*******************
+  Navbar
+*******************/
+@media screen and (min-width: 768px) {
+  #bs-example-navbar-collapse-1.collapse{
+    display: block !important;
+  }
+}
