@@ -2,8 +2,10 @@ app.controller('PresenterCtrl', function($scope, $firebaseObject, $firebaseArray
 
   // On load
   var refArray = new Firebase("https://getbubble.firebaseio.com/attendees");
-  
   $scope.attendees = $firebaseArray(refArray);
+
+  var refArray = new Firebase("https://getbubble.firebaseio.com/quizzes");
+  $scope.quizQuestions = $firebaseArray(refArray);
 
   $scope.$watch('attendees', function(newVal, oldVal) {
     var numAttendees = $scope.attendees.length
@@ -30,6 +32,18 @@ app.controller('PresenterCtrl', function($scope, $firebaseObject, $firebaseArray
       });
     });
   }, true);
+
+
+  $scope.pushQuestion = function() {
+    var randomKey = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);
+    var questionData = { content: $scope.questionContent, key: randomKey };
+    var refObject = new Firebase("https://getbubble.firebaseio.com/quizzes/" + questionData.key);
+    var syncObject = $firebaseObject(refObject);
+    refObject.set(questionData);
+
+    var refArray = new Firebase("https://getbubble.firebaseio.com/quizzes");
+    $scope.quizQuestions = $firebaseArray(refArray);
+  };
 
   
 

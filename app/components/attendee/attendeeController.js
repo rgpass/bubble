@@ -1,25 +1,4 @@
 app.controller('AttendeeCtrl', function($scope, $firebaseObject, $firebaseArray) {
-  // var refObject = new Firebase("https://getbubble.firebaseio.com/");
-
-  // var syncObject = $firebaseObject(refObject);
-
-  // syncObject.$bindTo($scope, "attendee");
-
-  $scope.printStuff = function() {
-    console.log($scope.attendee);
-  }
-
-  // var refArray = new Firebase("https://getbubble.firebaseio.com/attendees");
-  // $scope.attendees = $firebaseArray(refArray);
-
-  // $scope.addAttendee = function() {
-  //   $scope.attendees.$add($scope.attendee);
-  // }
-
-  // $scope.saveAttendee = function(attendee) {
-  //   var attendee = attendee || $scope.attendee;
-  //   $scope.attendees.$save(attendee);
-  // }
 
   // CREATE USER ON LOAD
   var randomKey = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);
@@ -46,45 +25,24 @@ app.controller('AttendeeCtrl', function($scope, $firebaseObject, $firebaseArray)
   };
 
 
-  // var refArray = new Firebase("https://getbubble.firebaseio.com/attendees");
-  // $scope.attendees = $firebaseArray(refArray);
+  // LOAD IN QUIZ QUESTIONS
+  var refArray = new Firebase("https://getbubble.firebaseio.com/quizzes");
+  $scope.quizQuestions = $firebaseArray(refArray);
 
-  // $scope.attendees.$add($scope.attendee);
+  $scope.submitAnswer = function(question) {
+    var answer = { content: question.answer, name: $scope.attendee.name };
+    var refObject = new Firebase("https://getbubble.firebaseio.com/quizzes/" + question.key + "/answers/" + defaultAttendee.key);
+    refObject.set(answer);
+  }
 
-
-
-  // $scope.$watch('attendee', function(newValue, oldValue) {
-  //   var attendee = _.find($scope.attendees, function(attendee) {
-  //     return attendee.key == randomKey;
-  //   });
-  //   $scope.attendees.$save(attendee);
-  // })
-
-  // On load
-    // Create attendee object with defaults
-      // Sidebar: disable buttons that are already clicked
-    // Save to firebase
-
-  // On click for speed
-    // Set speed to the value
-      // 1 for too fast
-      // 0 for good
-      // -1 for too slow
-
-  // On click for volume
-    // Set volume to the value
-      // 1 for too quiet
-      // 0 for good
-      // -1 for too loud
-
-  // On question submit
-    // Add to questions array
-      // content:string(don't push if blank), approved:boolean(false), answered:boolean(false)
-        // TODO: Moderator functionality?
-
-  // On question remove
-    // Remove from questions array
-
-  // On question answered
-    // Set question's answered attribute to true
+  $scope.answeredQuestion = function(question) {
+    if (question.answers) {    
+      if (question.answers[defaultAttendee.key]) {
+        question.answer = question.answers[defaultAttendee.key].content;
+        return true;
+      } else {
+        return question.answers[defaultAttendee.key];
+      }
+    }
+  }
 });
