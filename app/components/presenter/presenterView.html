@@ -1,9 +1,18 @@
-<div class='row text-center'>
-  <div class='col-sm-2 col-sm-offset-4'>
+<div class='row'>
+  <div class='col-sm-4 col-sm-offset-2 text-right'>
+    <h1># Attendees:</h1>
+  </div>
+  <div class='col-sm-2'>
+    <h1>{{attendees.length}}</h1>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-sm-2 col-sm-offset-4 text-right'>
     <h1>% Lost:</h1>
   </div>
   <div class='col-sm-2'>
-    <h1 class='text-danger'>80%</h1>
+    <h1 ng-class='{ "text-danger": lostPercent > 10 }'>{{lostPercent}}%</h1>
   </div>
 </div>
 
@@ -15,13 +24,13 @@
     <h1>Speed:</h1>
   </div>
   <div class='col-sm-2'>
-    <h1 class='text-danger'>Too Fast</h1>
+    <h1 class='{{speedStatus.class}}'>{{speedStatus.content}}</h1>
   </div>
   <div class='col-sm-2 col-sm-offset-2'>
     <h1>Volume:</h1>
   </div>
   <div class='col-sm-2'>
-    <h1 class='text-success'>Good</h1>
+    <h1 class='{{volumeStatus.class}}'>{{volumeStatus.content}}</h1>
   </div>
 </div>
 
@@ -43,14 +52,12 @@
         <tr>
           <th>Name</th>
           <th>Question</th>
-          <th class='text-center'>Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Chris M.</td>
-          <td>What does the C mean in MVC?</td>
-          <td class='text-center'><a class='btn btn-xs btn-danger'>Remove</a></td>
+        <tr ng-repeat='question in questions | orderBy:"-answered"' ng-class="{ success: question.answered }">
+          <td>{{question.name}}</td>
+          <td>{{question.content}}</td>
         </tr>
       </tbody>
     </table>

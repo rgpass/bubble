@@ -5,7 +5,7 @@
 <div class="row">
   <div class='col-xs-12'>
     <div class="form-group has-feedback">
-      <input type="text" class="form-control" placeholder='Johnny Appleseed' value='Chris M.'>
+      <input type="text" class="form-control" ng-model="attendee.name" placeholder='Johnny Appleseed' value='Chris M.'>
     </div>
   </div>
 </div>
@@ -16,10 +16,10 @@
 
 <div class='row'>
   <div class='col-xs-6'>
-    <div class='btn btn-success btn-block'>I'm Good</div>
+    <div class='btn btn-success btn-block' ng-class="{ disabled: attendee.overall == 'good' }" ng-click='attendee.overall = "good"'>I'm Good</div>
   </div>
   <div class='col-xs-6'>
-    <div class='btn btn-danger btn-block'>I'm Lost</div>
+    <div class='btn btn-danger btn-block' ng-class="{ disabled: attendee.overall == 'lost' }" ng-click='attendee.overall = "lost"'>I'm Lost</div>
   </div>
 </div>
 
@@ -28,11 +28,11 @@
 <div class="row">
   <div class='col-xs-6'>
     <h3 class='text-center'>Speed:</h3>
-    <div class='btn btn-danger btn-block'>Too Fast</div>
+    <div class='btn btn-danger btn-block' ng-class="{ disabled: attendee.speed == 1 }" ng-click='attendee.speed = 1'>Too Fast</div>
   </div>
   <div class='col-xs-6'>
     <h3 class='text-center'>Volume:</h3>
-    <div class='btn btn-danger btn-block'>Too Quiet</div>
+    <div class='btn btn-danger btn-block' ng-class="{ disabled: attendee.volume == 1 }" ng-click='attendee.volume = 1'>Too Quiet</div>
   </div>
 </div>
 
@@ -40,10 +40,10 @@
 
 <div class="row">
   <div class='col-xs-6'>
-    <div class='btn btn-success btn-block'>Good Speed</div>
+    <div class='btn btn-success btn-block' ng-class="{ disabled: attendee.speed == 0 }" ng-click='attendee.speed = 0'>Good Speed</div>
   </div>
   <div class='col-xs-6'>
-    <div class='btn btn-success btn-block'>Good Volume</div>
+    <div class='btn btn-success btn-block' ng-class="{ disabled: attendee.volume == 0 }" ng-click='attendee.volume = 0'>Good Volume</div>
   </div>
 </div>
 
@@ -51,10 +51,10 @@
 
 <div class="row">
   <div class='col-xs-6'>
-    <div class='btn btn-warning btn-block'>Too Slow</div>
+    <div class='btn btn-warning btn-block' ng-class="{ disabled: attendee.speed == -1 }" ng-click='attendee.speed = -1'>Too Slow</div>
   </div>
   <div class='col-xs-6'>
-    <div class='btn btn-warning btn-block'>Too Loud</div>
+    <div class='btn btn-warning btn-block' ng-class="{ disabled: attendee.volume == -1 }" ng-click='attendee.volume = -1'>Too Loud</div>
   </div>
 </div>
 
@@ -67,11 +67,11 @@
 <div class="row">
   <div class="col-xs-8">
     <div class="form-group has-feedback">
-      <input type="text" class="form-control">
+      <input type="text" class="form-control" ng-model='questionContent'>
     </div>
   </div>
   <div class="col-xs-4">
-    <div class='btn btn-primary btn-block'>Ask</div>
+    <div class='btn btn-primary btn-block' ng-click='addQuestion()'>Ask</div>
   </div>
 </div>
 
@@ -85,11 +85,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>What does the C mean in MVC?</td>
+        <tr ng-repeat='question in questions | orderBy:"-answered"' ng-class="{ success: question.answered }">
+          <td>{{question.content}}</td>
           <td class='text-center'>
-            <a class='btn btn-xs btn-success'>Answered</a>
-            <a class='btn btn-xs btn-danger'>Remove</a>
+            <a class='btn btn-xs btn-success' ng-click='setToAnswered(question)' ng-hide='question.answered'>Answered</a>
+            <a class='btn btn-xs btn-danger' ng-click='questions.$remove(question)' ng-hide='question.answered'>Remove</a>
           </td>
         </tr>
       </tbody>
