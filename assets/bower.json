@@ -1,0 +1,18 @@
+{
+  "name": "bubble-app",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "~1.3.14",
+    "angular-resource": "~1.3.14",
+    "angular-cookies": "~1.3.14",
+    "angular-sanitize": "~1.3.14",
+    "angular-animate": "~1.3.14",
+    "angular-ui-router": "latest",
+    "angular-bootstrap": "0.12.1",
+    "angular-ui-router.stateHelper": "~1.1.0",
+    "ui-router-extras": "~0.0.10",
+    "underscore": "~1.7.0",
+    "angular-dragdrop": "~1.0.9",
+    "angular-messages": "1.4.0-build.3949+sha.3621dbc"
+  }
+}
