@@ -1,27 +1,33 @@
 <div class='row'>
   <div class='col-xs-7 col-sm-6 col-sm-offset-1 col-md-3 col-md-offset-1'>
-    <h1>Headcount:</h1>
+    <h1 class='hidden-xs'>Headcount:</h1>
+    <h3 class='visible-xs'>Headcount:</h3>
   </div>
   <div class='col-xs-5 col-md-4'>
-    <h1>{{attendees.length}}</h1>
+    <h1 class='hidden-xs'>{{attendees.length}}</h1>
+    <h3 class='visible-xs'>{{attendees.length}}</h3>
   </div>
 </div>
 
 <div class='row'>
   <div class='col-xs-7 col-sm-6 col-sm-offset-1 col-md-3 col-md-offset-1'>
-    <h1>Lost:</h1>
+    <h1 class='hidden-xs'>Lost:</h1>
+    <h3 class='visible-xs'>Lost:</h3>
   </div>
   <div class='col-xs-5 col-md-4'>
-    <h1 ng-class='{ "text-danger": lostPercent > 10 }'>{{lostPercent}}%</h1>
+    <h1 class='hidden-xs' ng-class='{ "text-danger": lostPercent > 10 }'>{{lostPercent}}%</h1>
+    <h3 class='visible-xs' ng-class='{ "text-danger": lostPercent > 10 }'>{{lostPercent}}%</h3>
   </div>
 </div>
 
 <div class='row'>
   <div class='col-xs-7 col-sm-6 col-sm-offset-1 col-md-3 col-md-offset-1'>
-    <h1>Speed:</h1>
+    <h1 class='hidden-xs'>Speed:</h1>
+    <h3 class='visible-xs'>Speed:</h3>
   </div>
   <div class='ccol-xs-5 col-md-4'>
-    <h1 class='{{speedStatus.class}}'>{{speedStatus.content}}</h1>
+    <h1 class='hidden-xs' ng-class='speedStatus.class'>{{speedStatus.content}}</h1>
+    <h3 class='visible-xs' ng-class='{{speedStatus.class}}'>{{speedStatus.content}}</h3>
   </div>
 </div>
 
@@ -35,7 +41,8 @@
 
 <div class='row'>
   <div class='col-sm-3 col-sm-offset-1'>
-    <h1>Questions:</h1>
+    <h1 class='hidden-xs'>Questions:</h1>
+    <h3 class='visible-xs'>Questions:</h3>
   </div>
 </div>
 
@@ -60,7 +67,8 @@
 
 <div class='row'>
   <div class='col-sm-3 col-sm-offset-1'>
-    <h1>Quizzes:</h1>
+    <h1 class='hidden-xs'>Quizzes:</h1>
+    <h3 class='visible-xs'>Quizzes:</h3>
   </div>
 </div>
 
