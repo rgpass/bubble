@@ -45,19 +45,25 @@ app.controller('PresenterCtrl', function($scope, $firebaseObject, $firebaseArray
     $scope.quizQuestions = $firebaseArray(refArray);
   };
 
-  
+  $scope.resetStats = function() {
+    _.each($scope.attendees, function(attendee) {
+      attendee.overall = 'good';
+      attendee.speed = 0;
+      $scope.attendees.$save(attendee);
+    });
+  };
 
 
   /***** UTILITY FUNCTIONS *****/
   function speedStatus(percent) {
     if (percent > 20) {
-      return { content: 'SLOW DOWN!', class: 'text-danger' };
+      return { content: 'TOO FAST!', class: 'text-danger' };
     } else if (percent > 10) {
-      return { content: 'Little slower', class: 'text-warning' };
+      return { content: 'Little fast', class: 'text-warning' };
     } else if (percent < -20) {
-      return { content: 'GO FASTER!', class: 'text-danger' };
+      return { content: 'TOO SLOW!', class: 'text-danger' };
     } else if (percent < -10) {
-      return { content: 'Little faster', class: 'text-warning' };
+      return { content: 'Little slow', class: 'text-warning' };
     } else {
       return { content: 'Good', class: 'text-success' };
     }
