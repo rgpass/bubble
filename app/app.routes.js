@@ -3,8 +3,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'app/components/home/homeView.html',
-        controller: 'HomeCtrl'
+        templateUrl: 'app/components/attendee/attendeeView.html',
+        controller: 'AttendeeCtrl'
       })
       .state('presenter', {
         url: '/presenter',
